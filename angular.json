@@ -22,6 +22,11 @@
               {
                 "glob": "**/*",
                 "input": "public"
+              },
+              {
+                "glob": "**/*",
+                "input": "src/app/formulario/zodiaco/IMG",
+                "output": "assets/IMG"
               }
             ],
             "styles": [

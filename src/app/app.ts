@@ -1,12 +1,14 @@
-import { Component, signal } from '@angular/core';
-import { OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { initFlowbite } from 'flowbite';
+import { ZodiacoComponent } from './formulario/zodiaco/zodiaco';
+
 @Component({
   selector: 'app-root',
-  styleUrl: './app.css',
+  standalone: true,
+  imports: [ZodiacoComponent],
   templateUrl: './app.html',
+  styleUrl: './app.css',
 })
-
 export class App implements OnInit {
   title = 'web-app';
 
@@ -14,4 +16,3 @@ export class App implements OnInit {
     initFlowbite();
   }
 }
-

@@ -1,0 +1,115 @@
+<div class="container my-5" style="max-width: 850px;">
+  <div class="card border-0 shadow-lg rounded-5 overflow-hidden">
+    <div class="card-header bg-gradient bg-primary text-white text-center py-4 px-3 position-relative">
+      <div class="d-inline-flex align-items-center justify-content-center bg-white bg-opacity-25 rounded-circle mb-2" style="width: 60px; height: 60px;">
+        <i class="bi bi-stars fs-2 text-warning"></i>
+        <span class="fs-2">☯</span>
+      </div>
+      <h2 class="mb-1 fw-bold tracking-wide">Calculadora del Zodiaco Chino</h2>
+      <p class="text-white-50 mb-0 small text-uppercase fw-semibold">Descubre tu edad exacta y tu signo zodiacal</p>
+    </div>
+
+    <div class="card-body p-4 p-md-5 bg-light bg-opacity-50">
+      <form (ngSubmit)="imprimir()">
+        <div class="bg-white p-4 rounded-4 shadow-sm mb-4 border border-1 border-light">
+          <div class="d-flex align-items-center mb-3 text-primary">
+            <span class="badge bg-primary-subtle text-primary rounded-pill me-2">1</span>
+            <h6 class="text-uppercase fw-bold mb-0 small">Información Personal</h6>
+          </div>
+          <div class="row g-3">
+            <div class="col-md-4">
+              <label for="nombre" class="form-label fw-medium text-secondary small">Nombre(s)</label>
+              <input type="text" id="nombre" class="form-control form-control-lg rounded-3 bg-light border-0" [(ngModel)]="nombre" name="nombre" placeholder="Ej. Juan" required />
+            </div>
+            <div class="col-md-4">
+              <label for="aPaterno" class="form-label fw-medium text-secondary small">Apellido Paterno</label>
+              <input type="text" id="aPaterno" class="form-control form-control-lg rounded-3 bg-light border-0" [(ngModel)]="aPaterno" name="aPaterno" placeholder="Ej. Pérez" required />
+            </div>
+            <div class="col-md-4">
+              <label for="aMaterno" class="form-label fw-medium text-secondary small">Apellido Materno</label>
+              <input type="text" id="aMaterno" class="form-control form-control-lg rounded-3 bg-light border-0" [(ngModel)]="aMaterno" name="aMaterno" placeholder="Ej. Gómez" />
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white p-4 rounded-4 shadow-sm mb-4 border border-1 border-light">
+          <div class="d-flex align-items-center mb-3 text-primary">
+            <span class="badge bg-primary-subtle text-primary rounded-pill me-2">2</span>
+            <h6 class="text-uppercase fw-bold mb-0 small">Fecha de Nacimiento y Sexo</h6>
+          </div>
+          <div class="row g-3 align-items-end">
+            <div class="col-4 col-md-3">
+              <label for="dia" class="form-label fw-medium text-secondary small">Día</label>
+              <input type="number" id="dia" class="form-control form-control-lg rounded-3 bg-light border-0 text-center" [(ngModel)]="dia" name="dia" min="1" max="31" placeholder="DD" required />
+            </div>
+            <div class="col-4 col-md-3">
+              <label for="mes" class="form-label fw-medium text-secondary small">Mes</label>
+              <input type="number" id="mes" class="form-control form-control-lg rounded-3 bg-light border-0 text-center" [(ngModel)]="mes" name="mes" min="1" max="12" placeholder="MM" required />
+            </div>
+            <div class="col-4 col-md-3">
+              <label for="anio" class="form-label fw-medium text-secondary small">Año</label>
+              <input type="number" id="anio" class="form-control form-control-lg rounded-3 bg-light border-0 text-center" [(ngModel)]="anio" name="anio" min="1900" max="2026" placeholder="AAAA" required />
+            </div>
+
+            <div class="col-12 col-md-3 mt-3 mt-md-0">
+              <label class="form-label fw-medium text-secondary small d-block">Sexo</label>
+              <div class="btn-group w-100 p-1 bg-light rounded-3" role="group">
+                <input type="radio" class="btn-check" id="masculino" value="Masculino" [(ngModel)]="sexo" name="sexo" />
+                <label class="btn btn-sm btn-outline-primary border-0 rounded-2 fw-semibold" for="masculino">Hombre</label>
+
+                <input type="radio" class="btn-check" id="femenino" value="Femenino" [(ngModel)]="sexo" name="sexo" />
+                <label class="btn btn-sm btn-outline-primary border-0 rounded-2 fw-semibold" for="femenino">Mujer</label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-lg w-100 rounded-4 fw-bold shadow py-3 text-uppercase tracking-wider">
+          Calcular y Mostrar Resultado
+        </button>
+      </form>
+
+      @if (mostrarResultado) {
+        <div class="mt-5 p-4 p-md-5 rounded-5 bg-white shadow-lg text-center position-relative border border-2 border-primary border-opacity-10">
+          <span class="position-absolute top-0 start-50 translate-middle badge rounded-pill bg-primary px-4 py-2 fs-6 shadow-sm">
+            Resultado
+          </span>
+
+          <h3 class="fw-bold text-dark mt-2 mb-1">{{ nombreCompleto }}</h3>
+          <p class="text-muted mb-4 small">Resumen de tu cálculo zodiacal</p>
+
+          <div class="row g-2 justify-content-center mb-4">
+            <div class="col-auto">
+              <div class="px-3 py-2 bg-primary bg-opacity-10 rounded-3 text-primary border border-primary border-opacity-25">
+                <span class="fw-bold fs-5">{{ edad }}</span> <small class="text-uppercase fw-semibold">Años</small>
+              </div>
+            </div>
+            <div class="col-auto">
+              <div class="px-3 py-2 bg-info bg-opacity-10 rounded-3 text-info-emphasis border border-info border-opacity-25">
+                <span class="fw-bold fs-5">{{ meses }}</span> <small class="text-uppercase fw-semibold">Meses</small>
+              </div>
+            </div>
+            <div class="col-auto">
+              <div class="px-3 py-2 bg-success bg-opacity-10 rounded-3 text-success border border-success border-opacity-25">
+                <span class="fw-bold fs-5">{{ dias }}</span> <small class="text-uppercase fw-semibold">Días</small>
+              </div>
+            </div>
+          </div>
+
+          @if (signo) {
+            <div class="pt-4 border-top">
+              <p class="text-muted small text-uppercase fw-bold mb-1">Tu Signo Chino Es</p>
+              <h2 class="display-6 fw-extrabold text-primary mb-3">{{ signo }}</h2>
+              
+              @if (imagenSigno) {
+                <div class="d-inline-block p-3 bg-light rounded-4 shadow-sm border border-1 border-white">
+                  <img [src]="imagenSigno" [alt]="signo" class="img-fluid rounded-3 object-fit-cover shadow-sm" style="max-width: 220px; height: 220px;" />
+                </div>
+              }
+            </div>
+          }
+        </div>
+      }
+    </div>
+  </div>
+</div>
