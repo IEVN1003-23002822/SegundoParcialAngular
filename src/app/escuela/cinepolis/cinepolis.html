@@ -1,0 +1,142 @@
+<div class="max-w-4xl mx-auto p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 mt-6">
+  
+  <div class="text-center mb-8">
+    <h1 class="text-4xl font-extrabold tracking-tight text-blue-900 dark:text-blue-400">
+      Cinépolis
+    </h1>
+    <p class="text-sm font-semibold text-amber-500 uppercase tracking-widest mt-1">
+      LA CAPITAL DEL CINE
+    </p>
+  </div>
+
+  <form [formGroup]="formulario" (ngSubmit)="procesar()" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    
+    <div class="p-5 border border-gray-300 rounded-lg bg-gray-50 dark:bg-gray-700 dark:border-gray-600">
+      <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-4 border-b pb-2">
+        Entradas
+      </h2>
+
+      <div class="mb-4">
+        <label for="nombre" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+          Nombre
+        </label>
+        <input
+          type="text"
+          id="nombre"
+          formControlName="nombre"
+          class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:text-white"
+          placeholder="Nombre del comprador"
+        />
+        <p *ngIf="formulario.get('nombre')?.touched && formulario.get('nombre')?.invalid" class="mt-1 text-xs text-red-600 dark:text-red-400">
+          El nombre es obligatorio.
+        </p>
+      </div>
+
+      <div class="mb-4">
+        <label for="compradores" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+          Cantidad Compradores
+        </label>
+        <input
+          type="number"
+          id="compradores"
+          formControlName="compradores"
+          min="1"
+          class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:text-white"
+        />
+      </div>
+
+      <div class="mb-4">
+        <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+          Tarjeta Cineco
+        </label>
+        <div class="flex items-center space-x-6">
+          <div class="flex items-center">
+            <input
+              id="cineco-si"
+              type="radio"
+              value="si"
+              formControlName="tarjetaCineco"
+              class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:ring-offset-gray-800 dark:bg-gray-700 dark:border-gray-600"
+            />
+            <label for="cineco-si" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+              Sí
+            </label>
+          </div>
+          <div class="flex items-center">
+            <input
+              id="cineco-no"
+              type="radio"
+              value="no"
+              formControlName="tarjetaCineco"
+              class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:ring-offset-gray-800 dark:bg-gray-700 dark:border-gray-600"
+            />
+            <label for="cineco-no" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+              No
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <div class="mb-2">
+        <label for="boletas" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+          Cantidad De Boletas
+        </label>
+        <input
+          type="number"
+          id="boletas"
+          formControlName="boletas"
+          min="1"
+          class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:text-white"
+        />
+      </div>
+    </div>
+
+    <div class="flex flex-col justify-between p-5 border border-gray-300 rounded-lg bg-gray-50 dark:bg-gray-700 dark:border-gray-600">
+      <div>
+        <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-4 border-b pb-2">
+          Salidas
+        </h2>
+
+        <div class="mb-4">
+          <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+            Valor a Pagar
+          </label>
+          <div class="p-3 bg-white border border-gray-300 rounded-lg text-2xl font-bold text-green-600 dark:bg-gray-800 dark:border-gray-600 dark:text-green-400">
+            ${{ totalPagar | number }}
+          </div>
+        </div>
+
+        <div *ngIf="mensajeError" class="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+          <span class="font-medium">Atención:</span> {{ mensajeError }}
+        </div>
+
+        <div *ngIf="resumenCompra" class="p-4 text-sm text-blue-800 rounded-lg bg-blue-50 dark:bg-gray-800 dark:text-blue-400">
+          <p><strong>Comprador:</strong> {{ resumenCompra.nombre }}</p>
+          <p><strong>Boletas adquiridas:</strong> {{ resumenCompra.boletas }}</p>
+        </div>
+      </div>
+
+      <div class="mt-6 pt-4 border-t border-gray-300 dark:border-gray-600">
+        <h3 class="text-sm font-semibold text-gray-700 dark:text-gray-300 mb-3">Acciones</h3>
+        <div class="flex gap-4">
+          <button
+            type="submit"
+            class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+          >
+            Procesar
+          </button>
+          
+          <button
+            type="button"
+            (click)="salir()"
+            class="w-full text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
+          >
+            Salir
+          </button>
+        </div>
+      </div>
+
+    </div>
+
+  </form>
+</div>

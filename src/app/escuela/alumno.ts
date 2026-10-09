@@ -1,6 +1,6 @@
 export interface Alumno {
-    matricula: '',
-    nombre:string,
-    correo:string,
-    material:string
+  matricula: string;
+  nombre: string;
+  correo: string;
+  materia: string;
 }

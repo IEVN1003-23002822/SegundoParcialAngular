@@ -1,39 +1,146 @@
-<form class="max-w-md mx-auto p-4">
-  <div class="relative z-0 w-full mb-5 group">
-      <input type="number" name="matricula" id="matricula" class="block py-2.5 px-0 w-full text-sm text-heading bg-transparent border-0 border-b-2 border-default-medium appearance-none focus:outline-none focus:ring-0 focus:border-brand peer" placeholder=" " required />
-      <label for="matricula" class="absolute text-sm text-body duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 peer-focus:text-fg-brand peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Matrícula</label>
-  </div>
+<div class="max-w-2xl mx-auto p-6 bg-white rounded-lg shadow">
+ 
+  <h1 class="text-3xl font-bold text-gray-900 mb-6">
+   Lista Alumnos
+  </h1>
+ 
+  <form [formGroup]="formulario" (ngSubmit)="MuesraAlumno()">
+ 
+    <!-- Matricula -->
+    <div class="mb-5">
+ 
+      <label
+        for="Matricula"
+        class="block mb-2 text-sm font-medium text-gray-900"
+      >
+        Matricula
+      </label>
+ 
+      <input
+        type="text"
+        id="Matricula"
+        name="Matricula"
+        formControlName="matricula"
+        required
+        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg
+               focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+        placeholder="Matricula"
+      >
 
-  <div class="relative z-0 w-full mb-5 group">
-      <input type="text" name="nombre" id="nombre" class="block py-2.5 px-0 w-full text-sm text-heading bg-transparent border-0 border-b-2 border-default-medium appearance-none focus:outline-none focus:ring-0 focus:border-brand peer" placeholder=" " required />
-      <label for="nombre" class="absolute text-sm text-body duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 peer-focus:text-fg-brand peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Nombre</label>
-  </div>
+    
+      <!-- Nombre -->
+      <label
+        for="name"
+        class="block mb-2 text-sm font-medium text-gray-900"
+      >
+        Nombre
+      </label>
+ 
+      <input
+        type="text"
+        id="name"
+        name="name"
+        formControlName="nombre"
+        required
+        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg
+               focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+        placeholder="Nombre"
+      >
 
-  <div class="grid md:grid-cols-2 md:gap-6">
-    <div class="relative z-0 w-full mb-5 group">
-        <input type="text" name="paterno" id="paterno" class="block py-2.5 px-0 w-full text-sm text-heading bg-transparent border-0 border-b-2 border-default-medium appearance-none focus:outline-none focus:ring-0 focus:border-brand peer" placeholder=" " required />
-        <label for="paterno" class="absolute text-sm text-body duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 peer-focus:text-fg-brand peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Apellido Paterno</label>
-    </div>
-    <div class="relative z-0 w-full mb-5 group">
-        <input type="text" name="materno" id="materno" class="block py-2.5 px-0 w-full text-sm text-heading bg-transparent border-0 border-b-2 border-default-medium appearance-none focus:outline-none focus:ring-0 focus:border-brand peer" placeholder=" " required />
-        <label for="materno" class="absolute text-sm text-body duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 peer-focus:text-fg-brand peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Apellido Materno</label>
-    </div>
-  </div>
+      <!-- Correo -->
+      <label
+        for="name"
+        class="block mb-2 text-sm font-medium text-gray-900"
+      >
+        Correo
+      </label>
+ 
+      <input
+        type="text"
+        id="name"
+        name="name"
+        formControlName="correo"
+        required
+        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg
+               focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+        placeholder="Correo"
+      >
 
-  <div class="grid md:grid-cols-2 md:gap-6">
-    <div class="relative z-0 w-full mb-5 group">
-        <input type="date" name="fechNac" id="fechNac" class="block py-2.5 px-0 w-full text-sm text-heading bg-transparent border-0 border-b-2 border-default-medium appearance-none focus:outline-none focus:ring-0 focus:border-brand peer" placeholder=" " required />
-        <label for="fechNac" class="absolute text-sm text-body duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 peer-focus:text-fg-brand peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Fecha de Nacimiento</label>
+      <!-- Materia -->
+      <label
+        for="name"
+        class="block mb-2 text-sm font-medium text-gray-900"
+      >
+        Materia
+      </label>
+ 
+      <input
+        type="text"
+        id="name"
+        name="name"
+        formControlName="materia"
+        required
+        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg
+               focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+        placeholder="Materia"
+      >
+ 
+      
+ 
     </div>
-    <div class="relative z-0 w-full mb-5 group">
-        <select name="sexo" id="sexo" class="block py-2.5 px-0 w-full text-sm text-heading bg-transparent border-0 border-b-2 border-default-medium appearance-none focus:outline-none focus:ring-0 focus:border-brand peer" required>
-          <option value="" disabled selected hidden></option>
-          <option value="H">Hombre</option>
-          <option value="M">Mujer</option>
-        </select>
-        <label for="sexo" class="absolute text-sm text-body duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 peer-focus:text-fg-brand peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Sexo</label>
-    </div>
-  </div>
+ 
+    <!-- Comentario -->
+    <div class="mb-5">
+ 
+      
+      <!-- Error required -->
+      <div
+        *ngIf="
+          formulario.get('matricula')?.touched &&
+          formulario.get('matricula')?.errors?.['required']
+        "
+        class="p-4 mt-2 text-sm text-red-800 rounded-lg bg-red-50"
+        role="alert"
+      >
+        This field is required.
+      </div>
+ 
+ 
+      <!-- Botón -->
+      <div class="flex justify-end mt-5">
+ 
+        <button
+          type="submit"
+          
+          class="text-white bg-blue-700 hover:bg-blue-800
+                 focus:ring-4 focus:outline-none focus:ring-blue-300
+                 font-medium rounded-lg text-sm px-5 py-2.5
+                 disabled:opacity-50 disabled:cursor-not-allowed"
+        >
+          Registrar
+        </button>
 
-  <button type="submit" class="text-white bg-brand box-border border border-transparent hover:bg-brand-strong focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none">Guardar Alumno</button>
-</form>
+
+        <button
+          type="submit"
+         
+          class="text-white bg-blue-700 hover:bg-blue-800
+                 focus:ring-4 focus:outline-none focus:ring-blue-300
+                 font-medium rounded-lg text-sm px-5 py-2.5
+                 disabled:opacity-50 disabled:cursor-not-allowed"
+        >
+          Cargar
+        </button>
+ 
+      </div>
+ 
+    </div>
+ 
+  </form>
+  <h2>lista de Alumnos</h2>
+  <h3>Matricual:{{nuevoAlumno.matricula}}</h3>
+  <h3>Nombre:{{nuevoAlumno.nombre}}</h3>
+  <h3>Correo:{{nuevoAlumno.correo}}</h3>
+  <h3>Materia:{{nuevoAlumno.materia}}</h3>
+
+</div>
