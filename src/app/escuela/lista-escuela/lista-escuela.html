@@ -1,146 +1,146 @@
-<div class="max-w-2xl mx-auto p-6 bg-white rounded-lg shadow">
- 
+<div class="max-w-2xl mx-auto p-6 bg-white rounded-lg shadow mt-6">
+  
   <h1 class="text-3xl font-bold text-gray-900 mb-6">
-   Lista Alumnos
+    Lista Alumnos
   </h1>
- 
-  <form [formGroup]="formulario" (ngSubmit)="MuesraAlumno()">
- 
+  
+  <form [formGroup]="formulario" (ngSubmit)="agregarAlumno()">
+  
     <!-- Matricula -->
     <div class="mb-5">
- 
-      <label
-        for="Matricula"
-        class="block mb-2 text-sm font-medium text-gray-900"
-      >
+      <label for="Matricula" class="block mb-2 text-sm font-medium text-gray-900">
         Matricula
       </label>
- 
       <input
         type="text"
         id="Matricula"
-        name="Matricula"
         formControlName="matricula"
         required
-        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg
-               focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
         placeholder="Matricula"
       >
+    </div>
 
-    
-      <!-- Nombre -->
-      <label
-        for="name"
-        class="block mb-2 text-sm font-medium text-gray-900"
-      >
+    <!-- Nombre -->
+    <div class="mb-5">
+      <label for="name" class="block mb-2 text-sm font-medium text-gray-900">
         Nombre
       </label>
- 
       <input
         type="text"
         id="name"
-        name="name"
         formControlName="nombre"
         required
-        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg
-               focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
         placeholder="Nombre"
       >
+    </div>
 
-      <!-- Correo -->
-      <label
-        for="name"
-        class="block mb-2 text-sm font-medium text-gray-900"
-      >
+    <!-- Correo -->
+    <div class="mb-5">
+      <label for="correo" class="block mb-2 text-sm font-medium text-gray-900">
         Correo
       </label>
- 
       <input
         type="text"
-        id="name"
-        name="name"
+        id="correo"
         formControlName="correo"
         required
-        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg
-               focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
         placeholder="Correo"
       >
+    </div>
 
-      <!-- Materia -->
-      <label
-        for="name"
-        class="block mb-2 text-sm font-medium text-gray-900"
-      >
+    <!-- Materia -->
+    <div class="mb-5">
+      <label for="materia" class="block mb-2 text-sm font-medium text-gray-900">
         Materia
       </label>
- 
       <input
         type="text"
-        id="name"
-        name="name"
+        id="materia"
         formControlName="materia"
         required
-        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg
-               focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
         placeholder="Materia"
       >
- 
-      
- 
     </div>
- 
-    <!-- Comentario -->
-    <div class="mb-5">
- 
-      
-      <!-- Error required -->
-      <div
-        *ngIf="
-          formulario.get('matricula')?.touched &&
-          formulario.get('matricula')?.errors?.['required']
-        "
-        class="p-4 mt-2 text-sm text-red-800 rounded-lg bg-red-50"
-        role="alert"
+
+    <!-- Error required -->
+    <div
+      *ngIf="
+        formulario.get('matricula')?.touched &&
+        formulario.get('matricula')?.errors?.['required']
+      "
+      class="p-4 mt-2 text-sm text-red-800 rounded-lg bg-red-50"
+      role="alert"
+    >
+      This field is required.
+    </div>
+
+    <!-- Botón -->
+    <div class="flex justify-end mt-5 gap-3">
+      <button
+        type="submit"
+        class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5"
       >
-        This field is required.
-      </div>
- 
- 
-      <!-- Botón -->
-      <div class="flex justify-end mt-5">
- 
-        <button
-          type="submit"
-          
-          class="text-white bg-blue-700 hover:bg-blue-800
-                 focus:ring-4 focus:outline-none focus:ring-blue-300
-                 font-medium rounded-lg text-sm px-5 py-2.5
-                 disabled:opacity-50 disabled:cursor-not-allowed"
-        >
-          Registrar
-        </button>
-
-
-        <button
-          type="submit"
-         
-          class="text-white bg-blue-700 hover:bg-blue-800
-                 focus:ring-4 focus:outline-none focus:ring-blue-300
-                 font-medium rounded-lg text-sm px-5 py-2.5
-                 disabled:opacity-50 disabled:cursor-not-allowed"
-        >
-          Cargar
-        </button>
- 
-      </div>
- 
+        Registrar
+      </button>
     </div>
- 
+
   </form>
-  <h2>lista de Alumnos</h2>
-  <h3>Matricual:{{nuevoAlumno.matricula}}</h3>
-  <h3>Nombre:{{nuevoAlumno.nombre}}</h3>
-  <h3>Correo:{{nuevoAlumno.correo}}</h3>
-  <h3>Materia:{{nuevoAlumno.materia}}</h3>
+
+  <!-- Tabla -->
+  <div class="max-w-6xl mx-auto mt-8">
+    <h2 class="mb-4 text-2xl font-bold text-gray-900">
+      Lista de alumnos
+    </h2>
+    <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+      <table class="w-full text-sm text-left text-gray-500">
+        <thead class="text-xs text-gray-700 uppercase bg-gray-100">
+          <tr>
+            <th scope="col" class="px-6 py-3">Matrícula</th>
+            <th scope="col" class="px-6 py-3">Nombre</th>
+            <th scope="col" class="px-6 py-3">Correo</th>
+            <th scope="col" class="px-6 py-3">Materia</th>
+            <th scope="col" class="px-6 py-3">Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let alumno1 of alumnos; let i = index" class="bg-white border-b border-gray-200 hover:bg-gray-50">
+            <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+              {{ alumno1.matricula }}
+            </td>
+            <td class="px-6 py-4">{{ alumno1.nombre }}</td>
+            <td class="px-6 py-4">{{ alumno1.correo }}</td>
+            <td class="px-6 py-4">{{ alumno1.materia }}</td>
+            <td class="px-6 py-4">
+              <div class="flex gap-2">
+                <button
+                  type="button"
+                  class="px-4 py-2 text-sm font-medium text-white bg-green-600 rounded-lg hover:bg-green-700"
+                  (click)="editarAlumno(i)"
+                >
+                  Editar
+                </button>
+                <button
+                  type="button"
+                  class="px-4 py-2 text-sm font-medium text-white bg-red-600 rounded-lg hover:bg-red-700"
+                  (click)="eliminarAlumno(i)"
+                >
+                  Eliminar
+                </button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Mensaje cuando no existen alumnos -->
+    <div *ngIf="alumnos.length === 0" class="p-4 mt-4 text-sm text-gray-800 rounded-lg bg-gray-100" role="alert">
+      <span class="font-medium">Información:</span> No hay alumnos registrados.
+    </div>
+  </div>
 
 </div>
